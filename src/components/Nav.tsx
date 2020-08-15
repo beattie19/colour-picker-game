@@ -1,10 +1,18 @@
 import React from 'react';
-import './styles.css';
 
 const Nav: React.FC = () => {
 
     return(
-        <div className="nav">Nav</div>
+        <div className="nav">
+            <div className="nav-section">
+                <div className="new-game">NEW GAME</div>
+            </div>
+            <div className="nav-section">
+                <div className="easy">EASY</div>
+                <span className="spacer"> | </span>
+                <div className="hard">HARD</div>
+            </div>
+        </div>
     )
 }
 

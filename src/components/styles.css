@@ -1,23 +1,41 @@
 .gamebody {
-    background-color: red;
+    background-color: rgb(100, 100, 187);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
 }
 
 .nav {
-    background-color: blue;
+    background-color: rgb(72, 72, 173);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-section {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .header {
-    background-color: yellow;
+    text-align: center;
+    color: white;
+    background-color: rgb(9, 24, 31);
+    padding: 5px;
 }
 
 .tile {
-    background-color: blueviolet;
-    height: auto;
+    background-color: white;
+    height: 100px;
     margin: 1.5%;
+    width: 30%;
     border-radius: 10%;
-    width: 30vw;
-    height: 30vw;
+}
+
+.spacer {
+    padding: 0 5px;
 }

@@ -2,12 +2,12 @@ import React from 'react';
 import './styles.css';
 
 type HeaderProps = {
-    titleColour: number[];
+    tileColour: number[];
 }
 
-const Header: React.FC<HeaderProps> = ({titleColour}) => {
+const Header: React.FC<HeaderProps> = ({tileColour}) => {
 
-    const formattedColours = `${titleColour[0]}, ${titleColour[1]}, ${titleColour[2]}`
+    const formattedColours = `${tileColour[0]}, ${tileColour[1]}, ${tileColour[2]}`
     return(
         <div className="header">
             <h3>THE GREAT</h3>

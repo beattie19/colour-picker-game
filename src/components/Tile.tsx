@@ -1,10 +1,9 @@
 import React from 'react';
 import './styles.css';
 
-const Tile: React.FC<{key: number}> = ({key}) => {
-
+const Tile: React.FC<{colour: number[]}> = ({colour}) => {
     return(
-        <div key={key} className="tile">Tile</div>
+        <div className="tile" style={{backgroundColor: `rgb(${colour.toString()})`}}/>
     )
 }
 

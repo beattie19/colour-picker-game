@@ -10,9 +10,11 @@ const GameBody: React.FC<GameBodyProps> = ({tileColours}) => {
     return(
         <>
             <div className="gamebody">
-                {tileColours.map((colour) => {
-                return  <Tile key={Math.random()}>Colour</Tile>
-                })}
+                <div className="tileSection">
+                    {tileColours.map((colour) => {
+                        return <Tile key={Math.random()} colour={colour} />
+                    })}
+                </div>
             </div>
         </>
     )

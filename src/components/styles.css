@@ -14,9 +14,19 @@
 
 .nav {
     background-color: rgb(72, 72, 173);
-    padding: 10px;
     display: flex;
     justify-content: center;
+}
+
+.nav-section button {
+    background-color: rgb(  72, 72, 173);
+    height: 50px;
+    color: white;
+    border: 0px;
+}
+
+.nav-section button:hover {
+    background-color: rgb(43, 144, 226);
 }
 
 .nav-section {

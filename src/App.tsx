@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import GameBody from './components/GameBody';
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -9,7 +9,7 @@ const generateRandomTileColour = (): number[] => {
   return Array.from(Array(3), (_, i) => createRandomCssColourValue())
 }
 
-const generateGameTiles = (numberOfTiles = 3)  => {
+const generateGameTiles = (numberOfTiles: number): number[][]  => {
   const rgbColours = [];
   for (let i=0; i < numberOfTiles; i++) {
     rgbColours.push(generateRandomTileColour());
@@ -22,14 +22,12 @@ function App() {
   const [answer, setAnswer] = useState<number[]>([]);
   const [gameStarted, setGameStarted] = useState<boolean>(false);
 
-  const startGame = (): void => {
-    setTileColours(generateGameTiles(6));
-    const randomIndex = Math.floor(Math.random() * 6);
-    console.log('tiles', tileColours);
-    console.log('answer', tileColours[randomIndex]);
-
-    setAnswer(tileColours[randomIndex]);
+  const startGame = (tileCount = 3): void => {
     setGameStarted(true);
+    const generatedGameTiles = generateGameTiles(tileCount); 
+    setTileColours(generatedGameTiles);
+    const randomIndex = Math.floor(Math.random() * tileCount);
+    setAnswer(generatedGameTiles[randomIndex]);
   };
 
   useEffect(() => {
@@ -38,14 +36,14 @@ function App() {
     }
   });
 
-  // if (!tileColours || !answer) { return null }
+  if (!tileColours || !answer) { return null }
 
   return (
     <div>
       {answer &&
         <Header tileColour={answer}/>
       }
-      <Nav/>
+      <Nav startGame={startGame}/>
       {tileColours && answer &&
         <GameBody tileColours={tileColours}/>
       }

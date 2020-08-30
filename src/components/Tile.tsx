@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 
-const Tile: React.FC<{colour: number[]}> = ({colour}) => {
+type TileProps = {
+    colour: number[];
+    checkGameWon: (clickedColour: number[]) => boolean;
+    gameWon: boolean;
+}
+
+const Tile: React.FC<TileProps> = ({colour, checkGameWon, gameWon}) => {
+    const [hidden, setHidden] = useState(false);
+    const handleClick = () => {
+        checkGameWon(colour);
+        setHidden(!gameWon);
+    }
+
+    const styles =  hidden ? "tile hiddenTile" : "tile";
+
     return(
-        <div className="tile" style={{backgroundColor: `rgb(${colour.toString()})`}}/>
+        <div className={styles} style={{backgroundColor: `rgb(${colour.toString()})`}} onClick={handleClick}/>
     )
 }
 

@@ -17,24 +17,56 @@ const generateGameTiles = (numberOfTiles: number): number[][]  => {
   return rgbColours;
 }
 
+const generateGameTilesWithColour = (numberOfTiles: number, rgbValue: number[]): number[][]  => {
+  const rgbColours = [];
+  for (let i=0; i < numberOfTiles; i++) {
+    rgbColours.push(rgbValue);
+  }
+  return rgbColours;
+}
+
 function App() {
   const [tileColours, setTileColours] = useState<number[][]>([]);
   const [answer, setAnswer] = useState<number[]>([]);
   const [gameStarted, setGameStarted] = useState<boolean>(false);
+  const [currentDifficulty, setCurrentDifficulty] = useState(3);
+  const [gameWon, setGameWon] = useState<boolean>(false);
+  const [attemptMessage, setAttemptMessage] = useState('');
 
-  const startGame = (tileCount = 3): void => {
+  const startGame = (currentDifficulty: number): void => {
+    setCurrentDifficulty(currentDifficulty);
+    setAttemptMessage('');
     setGameStarted(true);
-    const generatedGameTiles = generateGameTiles(tileCount); 
+    const generatedGameTiles = generateGameTiles(currentDifficulty); 
     setTileColours(generatedGameTiles);
-    const randomIndex = Math.floor(Math.random() * tileCount);
+    const randomIndex = Math.floor(Math.random() * currentDifficulty);
     setAnswer(generatedGameTiles[randomIndex]);
+    setGameWon(false);
+  };
+
+  const checkGameWon = (currentTileColour: number[]) => {
+    if (currentTileColour === answer) {
+      setGameWon(true);
+      setAttemptMessage("CORRECT");
+      return true;
+    } else {
+      setGameWon(false);
+      setAttemptMessage("INCORRECT! TRY AGAIN")
+      return false;
+    }
   };
 
   useEffect(() => {
     if (!gameStarted) {
-      startGame();
+      startGame(currentDifficulty);
     }
   });
+
+  useEffect(() => {
+    if (gameWon) {
+      setTileColours(generateGameTilesWithColour(currentDifficulty, answer));
+    }
+  }, [gameWon, answer, currentDifficulty]);
 
   if (!tileColours || !answer) { return null }
 
@@ -43,9 +75,9 @@ function App() {
       {answer &&
         <Header tileColour={answer}/>
       }
-      <Nav startGame={startGame}/>
+      <Nav startGame={startGame} currentDifficulty={currentDifficulty} attemptMessage={attemptMessage}/>
       {tileColours && answer &&
-        <GameBody tileColours={tileColours}/>
+        <GameBody tileColours={tileColours} checkGameWon={checkGameWon} gameWon={gameWon}/>
       }
     </div>
   );

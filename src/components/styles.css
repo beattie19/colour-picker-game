@@ -1,3 +1,7 @@
+html {
+    background-color: rgb(11, 11, 49);
+}
+
 .gamebody {
     background-color: rgb(11, 11, 49);
 }
@@ -18,7 +22,21 @@
     justify-content: center;
 }
 
+.nav-section {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
 .nav-section button {
+    background-color: rgb(  72, 72, 173);
+    height: 50px;
+    color: white;
+    border: 0px;
+}
+
+.nav-section div {
     background-color: rgb(  72, 72, 173);
     height: 50px;
     color: white;
@@ -29,12 +47,6 @@
     background-color: rgb(43, 144, 226);
 }
 
-.nav-section {
-    width: 50%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-}
 
 .header {
     text-align: center;
@@ -47,6 +59,10 @@
     padding: 10%;
     margin: 3%;
     border-radius: 2%;
+}
+
+.hiddenTile {
+    visibility: hidden;
 }
 
 .spacer {

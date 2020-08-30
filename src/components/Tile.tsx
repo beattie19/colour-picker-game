@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import './styles.css';
+import { Tile as TileType} from '../App';
 
 type TileProps = {
-    colour: number[];
-    checkGameWon: (clickedColour: number[]) => boolean;
-    gameWon: boolean;
+    tile: TileType;
+    checkGameWon: (clickedColour: TileType) => boolean;
 }
 
-const Tile: React.FC<TileProps> = ({colour, checkGameWon, gameWon}) => {
-    const [hidden, setHidden] = useState(false);
+const Tile: React.FC<TileProps> = ({tile, checkGameWon}) => {
+
     const handleClick = () => {
-        checkGameWon(colour);
-        setHidden(!gameWon);
+        checkGameWon(tile);
     }
 
-    const styles =  hidden ? "tile hiddenTile" : "tile";
+    const styles = tile.hidden ? "tile hiddenTile" : "tile";
+
 
     return(
-        <div className={styles} style={{backgroundColor: `rgb(${colour.toString()})`}} onClick={handleClick}/>
+        <div className={styles} style={{backgroundColor: `rgb(${tile.colour.toString()})`}} onClick={handleClick}/>
     )
 }
 

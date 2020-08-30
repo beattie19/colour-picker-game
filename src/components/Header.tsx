@@ -1,13 +1,14 @@
 import React from 'react';
 import './styles.css';
+import { Tile } from '../App';
 
 type HeaderProps = {
-    tileColour: number[];
+    tile: Tile;
 }
 
-const Header: React.FC<HeaderProps> = ({tileColour}) => {
+const Header: React.FC<HeaderProps> = ({tile: { colour }}) => {
 
-    const formattedColours = `${tileColour[0]}, ${tileColour[1]}, ${tileColour[2]}`
+    const formattedColours = `${colour[0]}, ${colour[1]}, ${colour[2]}`
     return(
         <div className="header">
             <h3>THE GREAT</h3>

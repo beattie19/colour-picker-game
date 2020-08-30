@@ -58,18 +58,17 @@ function App() {
     if (clickedTile === answer) {
       setGameWon(true);
       setAttemptMessage("CORRECT");
-      return true;
     } else {
-      setGameWon(false);
-      const updatedTiles = tileColours.map((tile) => {
-        if (tile === clickedTile) {
-          tile.hidden = true;
-        } 
-        return tile;
-      });
-      setTileColours(updatedTiles);
-      setAttemptMessage("INCORRECT! TRY AGAIN")
-      return false;
+      if (!gameWon) {
+        const updatedTiles = tileColours.map((tile) => {
+          if (tile === clickedTile) {
+            tile.hidden = true;
+          } 
+          return tile;
+        });
+        setTileColours(updatedTiles);
+        setAttemptMessage("INCORRECT! TRY AGAIN")
+      }
     }
   };
 

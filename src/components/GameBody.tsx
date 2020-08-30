@@ -5,7 +5,7 @@ import { Tile as TileType } from '../App';
 
 type GameBodyProps = {
     tileColours: TileType[];
-    checkGameWon: (clickTile: TileType) => boolean;
+    checkGameWon: (clickTile: TileType) => void;
 }
 
 const GameBody: React.FC<GameBodyProps> = ({tileColours, checkGameWon}) => {

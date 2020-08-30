@@ -4,7 +4,7 @@ import { Tile as TileType} from '../App';
 
 type TileProps = {
     tile: TileType;
-    checkGameWon: (clickedColour: TileType) => boolean;
+    checkGameWon: (clickedColour: TileType) => void;
 }
 
 const Tile: React.FC<TileProps> = ({tile, checkGameWon}) => {
@@ -14,7 +14,6 @@ const Tile: React.FC<TileProps> = ({tile, checkGameWon}) => {
     }
 
     const styles = tile.hidden ? "tile hiddenTile" : "tile";
-
 
     return(
         <div className={styles} style={{backgroundColor: `rgb(${tile.colour.toString()})`}} onClick={handleClick}/>

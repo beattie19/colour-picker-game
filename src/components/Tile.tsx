@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.css';
 import { Tile as TileType} from '../App';
 
@@ -7,11 +7,9 @@ type TileProps = {
     checkGameWon: (clickedColour: TileType) => void;
 }
 
-const Tile: React.FC<TileProps> = ({tile, checkGameWon}) => {
+const Tile: React.FC<TileProps> = ({ tile, checkGameWon }) => {
 
-    const handleClick = () => {
-        checkGameWon(tile);
-    }
+    const handleClick = (): void => checkGameWon(tile);
 
     const styles = tile.hidden ? "tile hiddenTile" : "tile";
 
